@@ -18,8 +18,6 @@ public class CsvServiceImpl implements CsvService {
             while((line = br.readLine()) != null) {
                 String[] values = line.split(",");
 
-                System.out.println(Arrays.toString(values));
-
                 int id = Integer.parseInt(values[0]);
                 String content = values[1];
 
