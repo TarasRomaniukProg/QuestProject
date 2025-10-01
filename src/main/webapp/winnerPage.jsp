@@ -3,16 +3,144 @@
   User: user
   Date: 26.09.2025
   Time: 17:41
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Winner page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Cinzel", serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(20, 20, 40, 0.85);
+            padding: 50px 70px;
+            border-radius: 25px;
+            box-shadow: 0 0 30px rgba(0, 255, 200, 0.5), 0 0 60px rgba(0, 150, 255, 0.3);
+            text-align: center;
+            position: relative;
+            border: 2px solid rgba(0, 200, 255, 0.4);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00f7ff;
+            text-shadow: 0 0 15px #00f7ff, 0 0 30px #00c3ff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.3em;
+            color: #a0faff;
+        }
+
+        /* Магічні іскри */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00f7ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00f7ff, 0 0 30px #00c3ff;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-120vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Конфеті-вибух */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.9;
+            border-radius: 2px;
+            animation: explode 2s ease-out forwards;
+        }
+
+        @keyframes explode {
+            from {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: translate(var(--x), var(--y)) scale(0.5) rotate(1080deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<h1>You won</h1>
+<div class="card">
+    <h1>Вітаємо, Мандрівнику!</h1>
+    <p>Ви здолали магічний лабіринт 🔮</p>
+</div>
+
+<script>
+    // Магічні іскри
+    for (let i = 0; i < 60; i++) {
+        let sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDuration = 4 + Math.random() * 6 + "s";
+        sparkle.style.backgroundColor =
+            ["#00f7ff", "#9d4edd", "#ff6ec7"][Math.floor(Math.random() * 3)];
+        document.body.appendChild(sparkle);
+    }
+
+    // Великий конфеті-вибух
+    function confettiExplosion(x, y) {
+        for (let i = 0; i < 200; i++) { // Більше частинок
+            let confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = x + "px";
+            confetti.style.top = y + "px";
+            confetti.style.backgroundColor =
+                ["#ff4081", "#3f51b5", "#4caf50", "#ffeb3b", "#9c27b0"][Math.floor(Math.random() * 5)];
+
+            // Випадковий напрямок
+            let angle = Math.random() * 2 * Math.PI;
+            let distance = 200 + Math.random() * 400; // Більший розліт
+            let dx = Math.cos(angle) * distance;
+            let dy = Math.sin(angle) * distance;
+
+            confetti.style.setProperty("--x", dx + "px");
+            confetti.style.setProperty("--y", dy + "px");
+
+            document.body.appendChild(confetti);
+
+            // Прибираємо після анімації
+            setTimeout(() => confetti.remove(), 2500);
+        }
+    }
+
+    // Запускаємо вибух по центру
+    window.onload = () => {
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight / 2;
+        confettiExplosion(centerX, centerY);
+    };
+</script>
 
 </body>
 </html>

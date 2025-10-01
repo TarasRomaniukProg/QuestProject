@@ -1,9 +1,10 @@
 package org.example.questproject.service;
 
 import jakarta.servlet.http.HttpSession;
-import org.example.questproject.model.QuestionRequest;
 import org.example.questproject.model.QuestionResponse;
 
+import java.util.Iterator;
+
 public interface QuestionService {
-    QuestionResponse getQuestion(QuestionRequest request, HttpSession session);
+    QuestionResponse getQuestion(HttpSession session, Iterator<String> params);
 }

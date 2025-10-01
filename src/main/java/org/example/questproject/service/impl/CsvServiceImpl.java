@@ -1,19 +1,19 @@
 package org.example.questproject.service.impl;
 
 import org.example.questproject.model.Question;
+import org.example.questproject.model.exception.WrongPathException;
 import org.example.questproject.service.CsvService;
 
 import java.io.*;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CsvServiceImpl implements CsvService {
     @Override
-    public List<Question> readAllQuestions() {
+    public List<Question> readAllQuestions(String path) {
         List<Question> questions = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/user/IdeaProjects/projects/QuestProject/src/main/resources/questionList.csv"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(path))))) {
             String line;
             while((line = br.readLine()) != null) {
                 String[] values = line.split(",");
@@ -32,7 +32,7 @@ public class CsvServiceImpl implements CsvService {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new WrongPathException(path);
         }
         return questions;
     }
