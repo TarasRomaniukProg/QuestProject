@@ -1,0 +1,68 @@
+body {
+    font-family: 'Creepster', cursive;
+    background: linear-gradient(to right, #403f3f, #454545);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: url('https://kvestbook.ru/media/photos/labirint-kudago-0.jpg') no-repeat center center;
+    background-size: cover;  /* щоб картинка заповнювала весь хедер */
+    color: #ffffff;
+    padding: 40px 20px;      /* додатковий padding для висоти */
+    text-align: center;
+    font-size: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* щоб текст був читаємий на фоні */
+    border-bottom: 4px solid #333;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+h2 {
+    font-size: 80px;          /* великий текст для слова Лабіринт */
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #34495e;
+}
+h3 {
+    text-align: left;
+    color: #000000;
+    font-size: 25px;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 21px;
+    color: #2c3e50;
+    text-align: justify;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 24px 50px;
+    background: #470808;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 40px;
+
+}
+
+.btn:hover {
+    background: #e5e5e6;
+}

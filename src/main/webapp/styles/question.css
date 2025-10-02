@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* центрування горизонтально */
+    align-items: center;     /* центрування вертикально */
+    background-color: #f0f0f0;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px; /* відстань між кнопками */
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 20px;
+    background-color: #470808;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #e5e5e6;
+    color: #470808;
+}
