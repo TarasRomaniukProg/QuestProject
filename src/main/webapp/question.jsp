@@ -75,6 +75,24 @@
       %>
     </button>
   </form>
+
+  <ul>
+    <li>Username: <%
+      String username = (String) request.getAttribute("username");
+      out.println(username);
+    %></li>
+
+    <li>Game counter: <%
+      String counter = (String) request.getAttribute("counter");
+      out.println(counter);
+    %></li>
+
+    <li>IP address: <%
+      String ip = (String) request.getAttribute("ip");
+      out.println(ip);
+    %></li>
+
+  </ul>
 </div>
 
 </body>

@@ -45,6 +45,29 @@
             color: #ffaaaa;
         }
 
+        /* Стиль кнопки */
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-family: "Cinzel", serif;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(145deg, #660000, #ff3b3b);
+            border: 2px solid rgba(255, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), inset 0 0 10px rgba(150, 0, 0, 0.6);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #ff3b3b, #660000);
+            box-shadow: 0 0 25px rgba(255, 50, 50, 1), inset 0 0 15px rgba(200, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
         /* Тріщини */
         .crack {
             position: absolute;
@@ -91,6 +114,7 @@
 <div class="card">
     <h1>Гра закінчена</h1>
     <p>Магічний лабіринт поглинув вас...</p>
+    <a href="hello-servlet?restart=true" class="btn">Грати ще</a>
 </div>
 
 <script>

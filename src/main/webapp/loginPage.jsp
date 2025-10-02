@@ -116,7 +116,7 @@
 
 <div class="login-container">
     <h1>Увійти</h1>
-    <form method="post" action="login-servlet">
+    <form action="login-servlet">
         <label for="username">Ім'я користувача:</label>
         <input type="text" id="username" name="username" required>
 

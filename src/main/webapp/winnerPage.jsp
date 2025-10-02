@@ -44,6 +44,29 @@
             color: #a0faff;
         }
 
+        /* Стиль кнопки */
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-family: "Cinzel", serif;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(145deg, #003366, #00c3ff);
+            border: 2px solid rgba(0, 200, 255, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.7), inset 0 0 10px rgba(0, 100, 200, 0.6);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #00c3ff, #003366);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 1), inset 0 0 15px rgba(0, 150, 255, 0.8);
+            transform: scale(1.05);
+        }
+
         /* Магічні іскри */
         .sparkle {
             position: absolute;
@@ -93,6 +116,11 @@
 <div class="card">
     <h1>Вітаємо, Мандрівнику!</h1>
     <p>Ви здолали магічний лабіринт 🔮</p>
+    <a href="hello-servlet" class="btn" onclick=<%
+        HttpSession session1 = request.getSession();
+        session1.setAttribute("questionId", "1");
+        session1.setAttribute("counter", (Integer.parseInt((String) session1.getAttribute("counter")) + 1) + "");
+    %>>Грати ще</a>
 </div>
 
 <script>
@@ -110,7 +138,7 @@
 
     // Великий конфеті-вибух
     function confettiExplosion(x, y) {
-        for (let i = 0; i < 200; i++) { // Більше частинок
+        for (let i = 0; i < 200; i++) {
             let confetti = document.createElement("div");
             confetti.className = "confetti";
             confetti.style.left = x + "px";
@@ -118,9 +146,8 @@
             confetti.style.backgroundColor =
                 ["#ff4081", "#3f51b5", "#4caf50", "#ffeb3b", "#9c27b0"][Math.floor(Math.random() * 5)];
 
-            // Випадковий напрямок
             let angle = Math.random() * 2 * Math.PI;
-            let distance = 200 + Math.random() * 400; // Більший розліт
+            let distance = 200 + Math.random() * 400;
             let dx = Math.cos(angle) * distance;
             let dy = Math.sin(angle) * distance;
 
@@ -128,13 +155,10 @@
             confetti.style.setProperty("--y", dy + "px");
 
             document.body.appendChild(confetti);
-
-            // Прибираємо після анімації
             setTimeout(() => confetti.remove(), 2500);
         }
     }
 
-    // Запускаємо вибух по центру
     window.onload = () => {
         let centerX = window.innerWidth / 2;
         let centerY = window.innerHeight / 2;
